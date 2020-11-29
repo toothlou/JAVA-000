@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="std1" class="com.geektime.week05.spring.bean.Student">
+        <property name="age" value="18"/>
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean id="std2" class="com.geektime.week05.spring.bean.Student">
+        <property name="age" value="28"/>
+        <property name="name" value="李四"/>
+    </bean>
+
+    <bean id="class1" class="com.geektime.week05.spring.bean.CollageClass">
+        <property name="className" value="班级一"/>
+        <property name="studentList">
+            <list>
+                <ref bean="std1"/>
+                <ref bean="std2"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

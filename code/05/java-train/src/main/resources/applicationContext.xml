@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 获取连接池配置文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!-- 注入hikari连接池 -->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <!-- 根据hikari的GitHub手册，这是DataSourceJDBC驱动程序提供的类的名称。请参阅特定JDBC驱动程序的文档以获取此类名，或参见下表。注意不支持XA数据源。XA需要像bitronix这样的真正的事务管理器 。
+          请注意，如果您使用的jdbcUrl是“old-school”基于DriverManager的JDBC驱动程序配置，则不需要此属性 -->
+        <!--  <property name="dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource"></property>-->
+        <property name="maximumPoolSize" value="${jdbc.maximumPoolSize}"/>
+        <!-- 主要显示在日志记录和JMX管理控制台中，以标识池和池配置 -->
+        <property name="poolName" value="${jdbc.poolName}"></property>
+        <property name="idleTimeout" value="${jdbc.idleTimeout}"/>
+        <property name="jdbcUrl" value="${jdbc.Url}"></property>
+        <!-- name值不能写user,特定属性 -->
+        <property name="connectionTimeout" value="${jdbc.connectionTimeout}"></property>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+    </bean>
+    <bean name="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig"></constructor-arg>
+    </bean>
+</beans>
