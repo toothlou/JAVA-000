@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "bank2Service"
+  datasource:
+    url: jdbc:mysql://192.168.6.128:3306/bank2
+    username: loujg
+    password: Ljg2019!
+server:
+  tomcat:
+    basedir: servlet
+  port: 9062
+  address: 0.0.0.0

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "bank2Service"
+  datasource:
+    url: jdbc:mysql://172.30.0.141:3306/bank2
+    username: root
+    password: pingan_admin123%s
+server:
+  tomcat:
+    basedir: servlet
+  port: 6062
+  address: 0.0.0.0
